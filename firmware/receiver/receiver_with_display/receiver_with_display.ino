@@ -33,8 +33,8 @@ Adafruit_SharpMem display(SHARP_SCK, SHARP_MOSI, SHARP_SS, 400, 240);
 
 // Replace with your network credentials
 const char* ssid = "Starlink";
-const char* password = "fredfontaine";
-const char* serverAddress = "10.5.1.53";
+const char* password = "*********";
+const char* serverAddress = "*******";
 const int serverPort = 80;
 
 // Google Apps Script Web App URL
