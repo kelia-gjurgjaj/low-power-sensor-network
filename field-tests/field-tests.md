@@ -1,94 +1,28 @@
-```markdown
+# Field Tests Report
 
-&nbsp; # Field Tests Report
+## Power Testing
+- **Setup:** Measured power draw at the 6 V battery output and the 5 V buck-converter output; the anemometer powered separately on 12 V.
+- **Findings:**
+  - Nearly a 100 mW drop across the buck converter (76 % conversion efficiency).
+  - Continuous data transmission and OLED display add current draw; implement sleep modes or efficient regulators to save power.
 
-&nbsp; 
+<img src="images/power_graph.png" width="400" alt="Power over Time Graph" />
 
-&nbsp; ## Power Testing
+## Range Testing
+- **Line-of-Sight (Open Urban):** 1.11 km max reliable range before packet corruption.
+- **Dense Urban Interference:** 651 m max reliable range amid traffic and buildings.
 
-&nbsp; - \*\*Setup:\*\* Measured power draw at the 6 V battery output and the 5 V buck-converter output; the anemometer powered separately on 12 V.
+<img src="images/range.png" width="400" alt="Range" />
 
-&nbsp; - \*\*Findings:\*\*
+## Sensor Data Verification
+- **Anemometer:** Output voltage scaled proportionally with fan speed in three test settings.
+- **BME680 Sensor:** After 48 h burn-in, temperature, humidity, pressure, and VOC readings stable and within tolerances.
+- **OLED Display:** Correctly updates real-time sensor data but is a significant power sink.
 
-&nbsp;   - Nearly a 100 mW drop across the buck converter (76% conversion efficiency).
-
-&nbsp;   - Continuous data transmission and OLED display add current draw; implement sleep modes or efficient regulators to save power.
-
-&nbsp; 
-
-&nbsp; ## Range Testing
-
-&nbsp; - \*\*Line-of-Sight (Open Urban):\*\* 1.11 km max reliable range before packet corruption.
-
-&nbsp; - \*\*Dense Urban Interference:\*\* 651 m max reliable range amid traffic and buildings.
-
-&nbsp; 
-
-&nbsp; ## Sensor Data Verification
-
-\- \*\*Anemometer:\*\* Output voltage scaled proportionally with fan speed in three test settings.
-
-\- \*\*BME680 Sensor:\*\* After 48 h burn-in, temperature, humidity, pressure, and VOC readings stable and within tolerances.
-
-\- \*\*OLED Display:\*\* Correctly updates real-time sensor data but is a significant power sink.
+## Block Diagrams
+<img src="images/sender.png" width="400" alt="Sender" />          <img src="images/receiver.png" width="400" alt="Receiver" />
 
 
 
-```markdown
-
-\# Field Tests Report
-
-
-
-\## Power Testing
-
-\- \*\*Setup:\*\* Measured power draw at the 6 V battery output and the 5 V buck-converter output; the anemometer powered separately on 12 V.
-
-\- \*\*Findings:\*\*
-
-\- Nearly a 100 mW drop across the buck converter (76% conversion efficiency).
-
-\- Continuous data transmission and OLED display add current draw; implement sleep modes or efficient regulators to save power.
-
-
-
-!\[Power over Time Graph](images/power\_graph.png)
-
-
-
-\## Range Testing
-
-\- \*\*Line-of-Sight (Open Urban):\*\* 1.11 km max reliable range before packet corruption.
-
-\- \*\*Dense Urban Interference:\*\* 651 m max reliable range amid traffic and buildings.
-
-
-
-!\[Range](images/range.png)
-
-
-
-\## Sensor Data Verification
-
-\- \*\*Anemometer:\*\* Output voltage scaled proportionally with fan speed in three test settings.
-
-\- \*\*BME680 Sensor:\*\* After 48 h burn-in, temperature, humidity, pressure, and VOC readings stable and within tolerances.
-
-\- \*\*OLED Display:\*\* Correctly updates real-time sensor data but is a significant power sink.
-
-
-
-\## Block Diagrams
-
-!\[Sender](images/sender.png)
-
-!\[Receiver](images/receiver.png)
-
-
-
-\## Final Sensor Module
-
-!\[Rooster Module (Sender)](images/sensor\_module.png)
-
-
-
+## Final Sensor Module
+<img src="images/sensor_module.png" width="400" alt="Sensor Module" />
