@@ -1,8 +1,21 @@
-/*********
-  Rui Santos & Sara Santos - Random Nerd Tutorials
-  Modified from the examples of the Arduino LoRa library
-  More resources: https://RandomNerdTutorials.com/esp32-lora-rfm95-transceiver-arduino-ide/
-*********/
+/*
+ * Project: ESP32 LoRa Receiver + Sharp Memory LCD + Google Sheets Logger
+ * Description: Receives LoRa packets from sensor nodes, parses readings 
+ *              (temp, humidity, pressure, gas, wind), displays them on a 
+ *              400x240 Sharp Memory LCD, and logs to Google Sheets via 
+ *              an Apps Script endpoint with NTP timestamps.
+ *
+ * Hardware: ESP32 + RFM95 (SS=5, RST=26, DIO0=27) @ 915 MHz (NA)
+ *           Sharp Memory LCD 400x240 (SCK=14, MOSI=13, CS=15, DISP=25, VCOM=4)
+ * Libraries: LoRa, WiFi, HTTPClient, NTPClient, Adafruit_GFX, Adafruit_SharpMem
+ *
+ * Based on: Random Nerd Tutorials ESP32 LoRa guide by Rui & Sara Santos
+ * Modifications: Added Sharp LCD support, NTP time, JSON logging to Google Sheets,
+ *                and custom packet parsing.
+ *
+ * Author: Kelia Gjurgjaj, Ani Vardanyan, Alyssa Seims 
+ * Date Started: Oct 2024 
+ */
 
 #include <SPI.h>
 #include <LoRa.h>
