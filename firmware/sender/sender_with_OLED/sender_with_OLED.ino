@@ -1,13 +1,29 @@
-/*********
-  Rui Santos & Sara Santos - Random Nerd Tutorials
-  Complete project details at https://RandomNerdTutorials.com/esp32-anemometer-wind-speed-arduino/
-  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files. The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Softwar
-*********/
-/*********
-  Rui Santos & Sara Santos - Random Nerd Tutorials
-  Modified from the examples of the Arduino LoRa library
-  More resources: https://RandomNerdTutorials.com/esp32-lora-rfm95-transceiver-arduino-ide/
-*********/
+/*
+ * Project: ESP32 Anemometer + BME680 LoRa Sender (SSD1306)
+ * Description: Reads analog anemometer and BME680 over I2C, computes wind
+ *              speed (m/s, km/h, mph), displays values on a 128x64 OLED,
+ *              and transmits a formatted packet over LoRa @ 915 MHz.
+ *
+ * Hardware: ESP32, RFM95/96 (SS=5, RST=26, DIO0=27), OLED SSD1306 (I2C 0x3C),
+ *           BME680 (I2C on SDA=21, SCL=22)
+ * LoRa:    freq=915E6 (NA), txPower=17, syncWord=0xF3
+ * Packet:  "#<count> ID:<node> X:<mps> Y:<kmh> Z:<mph> T:<C> P:<hPa> H:<%> G:<kΩ>"
+ *
+ * Based on:
+ *   - Random Nerd Tutorials: ESP32 Anemometer & ESP32 LoRa RFM95 guides
+ *     https://randomnerdtutorials.com/esp32-anemometer-wind-speed-arduino/
+ *     https://randomnerdtutorials.com/esp32-lora-rfm95-transceiver-arduino-ide/
+ *   - Arduino LoRa library examples
+ *
+ * Modifications:
+ *   - Combined anemometer + BME680 sensing
+ *   - Voltage→wind-speed mapping with clamp
+ *   - OLED status/telemetry screens
+ *   - Custom LoRa packet schema (X/Y/Z/T/P/H/G)
+ *
+ * Author: Kelia Gjurgjaj, Ani Vardanyan, Alyssa Seims
+ * Date Started: Oct 2024
+ */
 
 #include <Wire.h>
 #include <SPI.h>
